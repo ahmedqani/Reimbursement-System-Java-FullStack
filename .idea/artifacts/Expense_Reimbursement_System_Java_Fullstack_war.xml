@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Expense_Reimbursement_System_Java_Fullstack:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Expense_Reimbursement_System_Java_Fullstack</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ERS-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Expense_Reimbursement_System_Java_Fullstack:war exploded" />
+    </root>
+  </artifact>
+</component>
