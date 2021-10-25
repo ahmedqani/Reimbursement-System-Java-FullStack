@@ -6,6 +6,6 @@
 
     <display-name>SocialHubWeekFour</display-name>
     <welcome-file-list>
-        <welcome-file>login.html</welcome-file>
+        <welcome-file>signin.html</welcome-file>
     </welcome-file-list>
 </web-app>

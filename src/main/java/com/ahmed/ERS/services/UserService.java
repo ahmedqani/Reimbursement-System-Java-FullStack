@@ -46,6 +46,16 @@ public class UserService {
         Logging.logger.warn("User: " + user.getUsername() + " 's Role has been changed to "+ user.getUserRole());
     }
 
+    public User updateUser(User user) throws Exception {
+        System.out.println("USerSerive UpdateUser Was Called!! with user > " + user);
+        try {
+            dao.updateUser(user);
+            Logging.logger.warn("User: " + user.getUsername() + " has been updated!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 
     public void deleteUser(int userId){
         dao.deleteUser(userId);

@@ -1,5 +1,7 @@
 package com.ahmed.ERS.servlets;
 
+import com.ahmed.ERS.exceptions.InvalidCredentialsException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +16,20 @@ public class MasterServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("MasterServlet Was called > Get Method");
-		Dispatcher.process(req, res);
+		try {
+			Dispatcher.process(req, res);
+		} catch (InvalidCredentialsException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("MasterServlet Was called > POST Method");
-		Dispatcher.process(req, res);
+		try {
+			Dispatcher.process(req, res);
+		} catch (InvalidCredentialsException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

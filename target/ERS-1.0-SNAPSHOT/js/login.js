@@ -23,7 +23,7 @@ async function login(e){
         });
         let res = await req.json();
         console.log(res)
-        currentUser.id = res.id;
+        currentUser.id = res.user_id;
         currentUser.username = res.username;
         currentUser.password = res.password;
         currentUser.firstName = res.firstName;
@@ -32,7 +32,12 @@ async function login(e){
         currentUser.userRole = res.userRole;
         console.log(currentUser);
         sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
-        location.href = '../emp_account.html';
+        if (currentUser.userRole === "MANAGER"){
+            location.href = '../admin_updateEmp.html';
+        }else {
+            location.href = '../emp_account.html';
+        }
+
     } catch(e){
         console.log(e)
         // temp.innerHTML = "UserName or Pass is inCorrect";

@@ -33,6 +33,9 @@ public interface UserDao {
 
     void updateUserRole(User userRoleToUpdate) throws Exception;
 
+    void updateUser(User userRoleToUpdate) throws Exception;
+
+
 
 
 

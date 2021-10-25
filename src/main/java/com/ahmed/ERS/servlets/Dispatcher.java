@@ -3,6 +3,8 @@ package com.ahmed.ERS.servlets;
 import com.ahmed.ERS.controller.LoginController;
 import com.ahmed.ERS.controller.SessionController;
 
+import com.ahmed.ERS.controller.UserController;
+import com.ahmed.ERS.exceptions.InvalidCredentialsException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,7 @@ import java.io.IOException;
 
 public class Dispatcher {
 
-	public static void process(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException {
+	public static void process(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException, InvalidCredentialsException {
 		System.out.println("In the Servlet Dispatcher with URI: " + req.getRequestURI());
 		switch(req.getRequestURI()) {
 			case "/api/login":
@@ -19,6 +21,12 @@ public class Dispatcher {
 				break;
 			case "/api/signup":
 				LoginController.signUp(req, res);
+				break;
+			case "/api/updateuser":
+				UserController.updateUser(req, res);
+				break;
+			case "/api/finduser":
+				UserController.findUser(req, res);
 				break;
 			case "/api/session":
 				SessionController.getSession(req, res);

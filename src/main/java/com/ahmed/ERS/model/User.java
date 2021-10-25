@@ -1,7 +1,7 @@
 package com.ahmed.ERS.model;
 
 public class User {
-    private long id;
+    private long user_id;
     private String username;
     private String password;
     private String firstName;
@@ -23,11 +23,11 @@ public class User {
 
 
     public long getId() {
-        return id;
+        return user_id;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.user_id = id;
     }
 
     public String getUsername() {
@@ -91,7 +91,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "user_id=" + user_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", userRole=" + userRole +

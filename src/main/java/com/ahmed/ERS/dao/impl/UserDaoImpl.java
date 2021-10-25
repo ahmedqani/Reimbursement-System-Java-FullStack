@@ -262,6 +262,49 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    @Override
+    public void updateUser(User userToUpdate) throws Exception {
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        int success = 0;
+
+        try {
+            connection = DAOUtilities.getConnection();
+            String sql = "update user set username = ?,password = ?,firstName = ?, lastName = ?,email = ?, userRole = ? where user_id = ?";
+
+
+            // Setup PreparedStatement
+            stmt = connection.prepareStatement(sql);
+
+            // Add parameters from user into PreparedStatement
+            stmt.setString(1, userToUpdate.getUsername());
+            stmt.setString(2, userToUpdate.getPassword());
+            stmt.setString(3, userToUpdate.getFirstName());
+            stmt.setString(4, userToUpdate.getLastName());
+            stmt.setString(5, userToUpdate.getEmail());
+            stmt.setString(6, userToUpdate.getUserRole());
+            stmt.setLong(7, userToUpdate.getId());
+
+            success = stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (success == 0) {
+            // then update didn't occur, throw an exception
+            throw new Exception("Failed to Update User > : " + userToUpdate);
+        }
+    }
 
 
 
