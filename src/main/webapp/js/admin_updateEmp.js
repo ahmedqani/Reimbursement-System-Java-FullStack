@@ -1,6 +1,8 @@
 let currentUser  = JSON.parse(sessionStorage.getItem("currentUser"));
 let managedUser = {};
-document.getElementById("showEmpInfo").onclick = function () {showAccountInfo()}
+let currentUserRequests = {};
+
+//let showAccount = document.getElementById("showEmpInfo").addEventListener('click', showAccountInfo);
 
 if (currentUser == null){
     alert("Please Login First");
@@ -91,12 +93,58 @@ async function findAccount(e){
         managedUser  = JSON.parse(sessionStorage.getItem("managedUser"));
         console.log(res)
         showAccountInfo();
+        await getEmpRequests();
     } catch(e){
         alert('Could not Find User');
         return;
     }
 
 }
+
+async function getEmpRequests() {
+
+
+    let user = {
+        author_id: managedUser.id
+    }
+    console.log(user)
+    try {
+        let req = await fetch('http://localhost:8080/api/getReimbursementByUserid', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
+        let res = await req.json();
+        console.log(res)
+        let requests = res;
+        sessionStorage.setItem("currentUserRequests", JSON.stringify(requests));
+        currentUserRequests = JSON.parse(sessionStorage.getItem("currentUserRequests"));
+        console.log(currentUserRequests);
+        let td = document.getElementById("showAllCurrentManagedReqTable");
+        console.log("loggin CurrentuserRequ", currentUserRequests);
+        console.log("loggin CurrentuserRequts first row", currentUserRequests[0]);
+        for (let row in currentUserRequests) {
+            console.log(currentUserRequests[row]);
+            td.innerHTML += `<tr><td>${currentUserRequests[row].id}</td>
+                     <td>${currentUserRequests[row].amount}</td>
+                     <td>${currentUserRequests[row].submitted}</td>
+                     <td>${currentUserRequests[row].resolved}</td>
+                     <td>${currentUserRequests[row].description}</td>
+                     <td>${currentUserRequests[row].resolver_id}</td>
+                     <td>${currentUserRequests[row].reimbursementType}</td>
+                     <td>${currentUserRequests[row].reimbursementStatus}</td>
+                     </tr>`
+        }
+    } catch (e) {
+        console.log(e)
+        // temp.innerHTML = "UserName or Pass is inCorrect";
+        return;
+    }
+
+}
+
 
 function showAccountInfo() {
     document.getElementById("user_id").value = managedUser.id;
