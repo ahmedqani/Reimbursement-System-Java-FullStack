@@ -2,6 +2,7 @@ package com.ahmed.ERS.dao;
 
 
 
+import com.ahmed.ERS.dao.impl.ReimbursementDaoImpl;
 import com.ahmed.ERS.dao.impl.UserDaoImpl;
 
 import java.sql.Connection;
@@ -22,6 +23,7 @@ public class DAOUtilities {
 	private static final String URL ="jdbc:mysql://localhost:3307/reimbursement_system?serverTimezone=UTC";
 	
 	private static UserDaoImpl userDaoImpl;
+	private static ReimbursementDaoImpl reimbursementDaoImpl;
 	private static Connection connection;
 
 
@@ -32,7 +34,13 @@ public class DAOUtilities {
 		}
 		return userDaoImpl;
 	}
+	public static synchronized ReimbursementDao getReimbursementDao() {
 
+		if (reimbursementDaoImpl == null) {
+			reimbursementDaoImpl = new ReimbursementDaoImpl();
+		}
+		return reimbursementDaoImpl;
+	}
 
 	public static synchronized Connection getConnection() throws SQLException {
 		if (connection == null) {

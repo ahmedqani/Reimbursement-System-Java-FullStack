@@ -1,3 +1,4 @@
+console.log(sessionStorage.getItem("currentUser"));
 let currentUser  = JSON.parse(sessionStorage.getItem("currentUser"));
 document.getElementById("showEmpInfo").onclick = function () {showAccountInfo()}
 

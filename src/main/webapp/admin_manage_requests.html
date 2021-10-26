@@ -69,65 +69,113 @@
                 <div class="col-sm-8 ml-auto mr-auto">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active">
-                            <div
-                                    class="col-sm-12 border border-primary shadow rounded pt-2">
-                                <form method="post" id="updateAccount">
+                            <div class="col-sm-12 border border-primary shadow rounded pt-2">
+                                <form method="post" id="searchRequest">
                                     <div class="form-group" >
-                                        <label class="font-weight-bold">UserName <span
-                                                class="text-danger">*</span></label> <input type="text"
-                                                                                            name="username" id="username"
-                                                                                            class="form-control" placeholder="Choose your user name" required>
-                                        <div class="text-danger">
-                                            <em>This will be your login name!</em>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" >
-                                        <label class="font-weight-bold">Password <span
-                                                class="text-danger">*</span></label> <input type="password"
-                                                                                            name="password" id="password"
-                                                                                            class="form-control" placeholder="***********"
-                                                                                            pattern="^\S{6,}$"
-                                                                                            required >
-                                    </div>
-                                    <div class="form-group" >
-                                        <label class="font-weight-bold">First Name <span
-                                                class="text-danger">*</span></label> <input type="text"
-                                                                                            name="firstname" id="firstname"
-                                                                                            class="form-control" placeholder="Enter Your First Name" required>
-                                    </div>
-                                    <div class="form-group" >
-                                        <label class="font-weight-bold">Last Name <span
-                                                class="text-danger">*</span></label> <input type="text"
-                                                                                            name="lastname" id="lastname"
-                                                                                            class="form-control" placeholder="Enter Your Last Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="font-weight-bold">Email <span
-                                                class="text-danger">*</span></label> <input type="email"
-                                                                                            name="email" id="email" class="form-control"
-                                                                                            placeholder="Enter valid email" required>
-                                    </div>
-                                    <div class="form-group" >
-                                        <label class="font-weight-bold">userRole <span
-                                                class="text-danger">*</span></label> <input type="text"
-                                                                                            name="userRole" id="userRole"
-                                                                                            class="form-control" placeholder="User Role" required>
+                                        <label class="font-weight-bold">Request ID <span
+                                                class="text-danger">*</span></label> <input type="number"
+                                                                                            name="request_id" id="searchRequestById"
+                                                                                            class="form-control" placeholder="Enter Request Number" required>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-block btn-primary" type="submit">
-                                            <i class="ace-icon fa fa-check bigger-110"></i> Update Account
+                                            <i class="ace-icon fa fa-check bigger-110"></i> Search Request By ID
+                                        </button>
+                                    </div>
+                                </form>
+                                <br>
+                                <hr>
+                                <form method="post" id="updateAccount">
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Request ID <span
+                                                class="text-danger">*</span></label> <input type="number"
+                                                                                            name="requestid" id="requestid"
+                                                                                            class="form-control" placeholder="requestid" disabled>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Request Amount <span
+                                                class="text-danger">*</span></label> <input type="number"
+                                                                                            name="requestAmount" id="requestAmount"
+                                                                                            class="form-control"disabled>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Description <span
+                                                class="text-danger">*</span></label> <input type="test"
+                                                                                            name="description" id="description"
+                                                                                            class="form-control"
+                                                                                            disabled >
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Request By <span
+                                                class="text-danger">*</span></label> <input type="number"
+                                                                                            name="requestBy" id="requestBy"
+                                                                                            class="form-control"  disabled>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Date Submitted <span
+                                                class="text-danger">*</span></label> <input type="text"
+                                                                                            name="submittedDate" id="submittedDate"
+                                                                                            class="form-control" disabled>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Type <span
+                                                class="text-danger">*</span></label> <input type="text"
+                                                                                            name="reimbursementType" id="reimbursementType"
+                                                                                            class="form-control" disabled>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Update Request Status!<span
+                                                class="text-danger">*</span></label>
+                                        <select name="reimbursementStatus" id="reimbursementStatus">
+                                            <option value="PENDING">PENDING</option>
+                                            <option value="APPROVED">APPROVED</option>
+                                            <option value="DENIED">DENIED</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-block btn-primary" type="submit">
+                                            <i class="ace-icon fa fa-check bigger-110"></i> Update Request
                                         </button>
                                     </div>
                                 </form>
 
                             </div>
                             <br>
-                            <a class="btn btn-primary" href="#" id="showEmpInfo"> View Current Account Info</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="container mt-2 mb-4">
+                <div class="col-sm-8 ml-auto mr-auto">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active">
+                            <div class="col-md-12 border border-primary shadow rounded pt-2">
+                                <a class="btn btn-primary" id="showAllCurrentRequests">View All of the Current Requests!</a>
+                                <div>
+                                    <table class="table table-striped table-dark table-boarded">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Request ID</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date Submitted</th>
+                                            <th scope="col">Date Resolved</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Resolved BY</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="reqAllTableTD">
+                                        </tbody>
+                                    </table>
+                                </div>
 
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

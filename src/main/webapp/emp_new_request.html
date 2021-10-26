@@ -73,33 +73,42 @@
                                     class="col-sm-12 border border-primary shadow rounded pt-2">
                                 <form method="post" role="form">
                                     <div class="form-group">
-                                        <label class="font-weight-bold">Email <span
-                                                class="text-danger">*</span></label> <input type="email"
-                                                                                            name="signupemail"
-                                                                                            id="signupemail"
+                                        <label class="font-weight-bold">Amount <span
+                                                class="text-danger">*</span></label> <input type="number"
+                                                                                            name="amount"
+                                                                                            id="amount"
                                                                                             class="form-control"
-                                                                                            placeholder="Enter valid email"
+                                                                                            placeholder="Enter Amount"
                                                                                             required
-                                                                                            disabled="disabled">
+                                                                                            >
                                     </div>
                                     <div class="form-group">
-                                        <label class="font-weight-bold">User Name <span
+                                        <label class="font-weight-bold">Description <span
                                                 class="text-danger">*</span></label> <input type="text"
-                                                                                            name="signupusername"
-                                                                                            id="signupusername"
+                                                                                            name="description"
+                                                                                            id="description"
                                                                                             class="form-control"
-                                                                                            placeholder="Choose your user name"
+                                                                                            placeholder="Describe"
                                                                                             required
-                                                                                            disabled="disabled">
+                                                                                            >
                                     </div>
-                                    <button type="submit" id="login-btn"
+                                    <div class="form-group" >
+                                        <label class="font-weight-bold">Type <span
+                                                class="text-danger">*</span></label>
+                                        <select name="reimbursementType" id="reimbursementType">
+                                            <option value="LODGING">LODGING</option>
+                                            <option value="TRAVEL">TRAVEL</option>
+                                            <option value="FOOD">FOOD</option>
+                                            <option value="OTHER">OTHER</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" id="new_request_bttn"
                                             class="btn btn-primary btn-block  ">New Reimbursement Request
                                     </button>
+                                    <br>
                                 </form>
                             </div>
                             <br>
-                            <a class="btn btn-primary" href="/change-password"> New Reimbursement Request</a>
-                            <a class="btn btn-primary" href="/change-password">View All of your Requests! </a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +117,7 @@
         </div>
     </div>
 </main>
-<script src="js/emp_main.js"></script>
+<script src="js/emp_new_req.js"></script>
 
 </div>
 </body>

@@ -1,6 +1,5 @@
 let form = document.getElementById("login").addEventListener('submit', login);
 let temp = document.getElementById("placeHolder");
-const currentUser = {};
 async function login(e){
 
     e.preventDefault();
@@ -23,13 +22,15 @@ async function login(e){
         });
         let res = await req.json();
         console.log(res)
-        currentUser.id = res.user_id;
-        currentUser.username = res.username;
-        currentUser.password = res.password;
-        currentUser.firstName = res.firstName;
-        currentUser.lastName = res.lastName;
-        currentUser.email = res.email;
-        currentUser.userRole = res.userRole;
+        const currentUser = {
+            user_id : res.user_id,
+            username:res.username,
+            password:res.password,
+            firstname:res.firstName,
+            lastname:res.lastName,
+            email:res.email,
+            userRole:res.userRole,
+        };
         console.log(currentUser);
         sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
         if (currentUser.userRole === "MANAGER"){
